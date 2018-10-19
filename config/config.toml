@@ -1,0 +1,16 @@
+[relay]
+resolver="127.0.0.1:53"
+listen_socks="0.0.0.0:1080"
+[gateway.shadowsocks]
+kind = "socks5"
+host = "127.0.0.1"
+port = 1081
+[dns]
+listen="0.0.0.0:53"
+[dns.server.google]
+addr="8.8.8.8:53"
+[dns.server.dnspod]
+addr="119.29.29.29:53"
+[dns.rule]
+chinalist="dnspod"
+else="google"
