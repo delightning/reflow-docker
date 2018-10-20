@@ -1,5 +1,6 @@
 FROM daocloud.io/library/ubuntu
 MAINTAINER developerdong<developerdong@gmail.com>
+WORKDIR /root
 RUN apt update \
  && apt install wget gcc git shadowsocks curl sudo -y \
  && rm -rf /var/lib/apt/lists/* \
