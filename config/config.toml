@@ -7,10 +7,10 @@ host = "127.0.0.1"
 port = 1081
 [dns]
 listen="0.0.0.0:53"
-[dns.server.google]
-addr="8.8.8.8:53"
+[dns.server.dns2socks]
+addr="127.0.0.1:54"
 [dns.server.dnspod]
 addr="119.29.29.29:53"
 [dns.rule]
-blacklist="google"
+blacklist="dns2socks"
 else="dnspod"
