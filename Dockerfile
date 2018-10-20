@@ -11,5 +11,5 @@ RUN export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static \
  && cargo install
 COPY config /root/config
 EXPOSE 53 1080
-CMD sslocal -s $SERVER_ADDR -p $SERVER_PORT -l 1081 -k $PASSWORD -m $METHOD \
+CMD sslocal -s $SERVER_ADDR -p $SERVER_PORT -l 1081 -k $PASSWORD -m $METHOD -d start \
  && /root/.cargo/bin/reflow --config /root/config
