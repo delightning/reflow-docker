@@ -1,6 +1,6 @@
 Tree-Format: reflow 0.1
 
 cond ip {
-    chinalist => do direct
+    whitelist => do direct
 }
 use shadowsocks

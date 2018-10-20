@@ -12,5 +12,5 @@ addr="8.8.8.8:53"
 [dns.server.dnspod]
 addr="119.29.29.29:53"
 [dns.rule]
-chinalist="dnspod"
-else="google"
+blacklist="google"
+else="dnspod"
