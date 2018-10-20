@@ -15,6 +15,6 @@ RUN apt update \
  && cargo install
 COPY config /root/config
 EXPOSE 53 1080
-CMD sslocal -s $SERVER_ADDR -p $SERVER_PORT -l 1081 -k $PASSWORD -m $METHOD -d start \
- && /root/dns2socks/dns2socks 127.0.0.1:1081 8.8.8.8:53 127.0.0.1:54 \ 
- && /root/.cargo/bin/reflow --config /root/config
+CMD sslocal -s $SERVER_ADDR -p $SERVER_PORT -l 1081 -k $PASSWORD -m $METHOD & \
+    /root/dns2socks/dns2socks 127.0.0.1:1081 8.8.8.8:53 127.0.0.1:54 & \ 
+    /root/.cargo/bin/reflow --config /root/config
