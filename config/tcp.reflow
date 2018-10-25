@@ -1,9 +1,0 @@
-Tree-Format: reflow 0.1
-
-cond domain {
-    whitelist => do direct
-}
-cond ip {
-    whitelist => do direct
-}
-use shadowsocks

@@ -1,0 +1,40 @@
+# declare a socks5 proxy called shadowsocks
+egress shadowsocks = socks5 127.0.0.1:1081
+
+# you can configure a dns proxy that will forward queries to different upstream servers depending on what domain name is being queried
+dns{
+   # use this address as your DNS server
+   listen=udp 127.0.0.1:53
+   forward= {
+       # if a domain name is in the zone "blacklist"
+       # connect to the upstream server 8.8.8.8 via a socks5 proxy defined earlier
+       blacklist => shadowsocks|udp 8.8.8.8:53
+       # use the dnspod dns server for everything else
+       else => udp 119.29.29.29:53
+   }
+}
+
+# you can configure one or more relays
+relay {
+ rule=breakwall
+ listen=socks5 0.0.0.0:1080
+ # you can optionally set a dns server
+ # it will use 8.8.8.8 by default if the option is omitted
+ resolver=udp 127.0.0.1:53
+}
+
+# a decision tree named breakwall
+rule breakwall= any[ # rules enclosed in "any[ ]" will be tried one by one util a rule matches
+    # first look at the domain name
+    cond domain {
+      whitelist => direct
+    }
+    
+    # next look at ip addresses
+    cond ip {
+        whitelist => direct
+    }
+    
+    # catch-all rule for everything else
+    shadowsocks
+]
