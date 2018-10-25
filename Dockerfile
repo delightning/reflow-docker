@@ -12,5 +12,5 @@ RUN apt update \
  && cargo install
 COPY config config
 EXPOSE 1080
-CMD sslocal -s $SERVER_ADDR -p $SERVER_PORT -l 1081 -k $PASSWORD -m $METHOD & \
-    .cargo/bin/reflow --config config
+CMD sslocal -s $SERVER_ADDR -p $SERVER_PORT -l 1081 -k $PASSWORD -m $METHOD --fast-open -d start \
+ && .cargo/bin/reflow --config config
