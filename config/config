@@ -8,9 +8,9 @@ dns{
    forward= {
        # if a domain name is in the zone "blacklist"
        # connect to the upstream server 8.8.8.8 via a socks5 proxy defined earlier
-       blacklist => shadowsocks|udp 8.8.8.8:53
+       blacklist => shadowsocks|tcp 8.8.8.8:53
        # use the dnspod dns server for everything else
-       else => udp 119.29.29.29:53
+       else => udp 114.114.114.114:53
    }
 }
 
@@ -29,12 +29,12 @@ rule breakwall= any[ # rules enclosed in "any[ ]" will be tried one by one util 
     cond domain {
       whitelist => direct
     }
-    
+
     # next look at ip addresses
     cond ip {
         whitelist => direct
     }
-    
+
     # catch-all rule for everything else
     shadowsocks
 ]
